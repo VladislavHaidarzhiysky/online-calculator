@@ -1,0 +1,36 @@
+            .Main {
+                  background-color: #e5e5e5;
+                  width: 800px;
+                  height: 500px;
+                  margin: 50px auto;
+            }
+
+            .Item {
+                  padding: 50px 0 0 220px;
+                  margin: 0;
+            }
+
+            .ContentTitle {
+                  padding: 50px 0 0 280px;
+                  margin: 0;
+            }
+
+            .ButtonItem {
+                  width: 45px;
+                  height: 30px;
+            }
+
+            .ButtonSection {
+                  margin: 5px 0 0 0;
+            }
+
+            .ButtonEqual {
+                  margin: 5px 0 0 5px;
+                  width: 45px;
+                  height: 65px;
+            }
+
+            .ButtonSectionItem {
+                  display: flex;
+                  flex-direction: row;
+            }
