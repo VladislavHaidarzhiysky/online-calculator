@@ -16,27 +16,16 @@ options.DefaultFileNames.Add("content.html");
 app.UseDefaultFiles(options);
 app.UseStaticFiles();
 
-app.Map("/expression", async (context) =>
+app.MapPut("/expression", (Expression expression) =>
 {
-    var response = context.Response;
-    var request = context.Request;
-    try
+    if (expression == null)
     {
-        var expression = await request.ReadFromJsonAsync<Expression>();
-        if (expression == null)
-        {
-            throw new Exception();
-        }
-        else
-        {
-            var calculatorService = app.Services.GetService<ICalculator>();
-            await response.WriteAsJsonAsync(calculatorService.ReceivingAnswer(expression.Exp));
-        }
+        return Results.BadRequest("Incorrect data");
     }
-    catch (Exception)
+    else
     {
-        response.StatusCode = 400;
-        await response.WriteAsJsonAsync("Incorrect data");
+        var calculatorService = app.Services.GetService<ICalculator>();
+        return Results.Json(calculatorService.ReceivingAnswer(expression.Exp));
     }
 });
 
